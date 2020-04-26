@@ -54,11 +54,11 @@
     
     
     <entry>
-      <title>Jquery</title>
-      <link href="/2019/10/26/jquery/"/>
-      <url>/2019/10/26/jquery/</url>
+      <title>Webpack</title>
+      <link href="/2019/10/26/webpack4.42.1/"/>
+      <url>/2019/10/26/webpack4.42.1/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol><li><p>webpack前端自动化构建工具，实现资源的合并，打包，压缩，混淆等诸多功能</p></li><li><p>能够处理文件相互依赖关系</p></li><li><p>能够解决js兼容问题，把高级的，浏览器不识别的语法转换成高级浏览器可以识别的语法</p></li></ol><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200419102000890.png"  alt="image-20200419102000890"></p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. npm install webpack -g</span><br><span class="line"></span><br><span class="line">2. npm install webpack-cli -g</span><br></pre></td></tr></table></figure><h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200419102043588.png"  alt="image-20200419102043588"></p><ul><li><p><em>将main.js打包输出到dist目录</em></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">webpack .&#x2F;src&#x2F;main.js -o .&#x2F;dist&#x2F;bundle.js</span><br></pre></td></tr></table></figure></li><li><p>index.html引用bundle.js即可使用</p></li></ul><h3 id="webpack-dev-server的使用"><a href="#webpack-dev-server的使用" class="headerlink" title="webpack-dev-server的使用"></a>webpack-dev-server的使用</h3><ol><li><p>npm install webpack-dev-server -D</p><ol><li><pre><code class="tex">即--dev（生产）包名会被注册在package.json的devDependencies里面，仅在开发环境下存在的包用-D，如babel，sass-loader这些解析器<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. webpack-dev-server工具，实现自动打包编译功能，和webpack用法一样</span><br><span class="line"></span><br><span class="line">3. webpack-dev-server 帮我们打包的bundle.js文件，并没有放到实际的物理磁盘上，而是，直接托管到电脑的内存中，所以，我们在项目根目录中，无法找到这个文件的</span><br><span class="line"></span><br><span class="line">   ####webpack-dev-server配置命令</span><br><span class="line"></span><br><span class="line">   1. 在package.json中加入，使用时npm run dev</span><br><span class="line">      1. ![image-20200419153037801](http:&#x2F;&#x2F;q9c3c6b0h.bkt.clouddn.com&#x2F;image-20200419153037801.png)</span><br><span class="line">      2. --open 自动打开浏览器   --port 设置端口号  --contentBase src 设置src为默认启动 --hot热加载浏览器不刷新</span><br><span class="line">   2. 第二种方式*了解*，**推荐第一种**</span><br><span class="line">      1. ![image-20200419154226826](http:&#x2F;&#x2F;q9c3c6b0h.bkt.clouddn.com&#x2F;image-20200419154226826.png)</span><br><span class="line"></span><br><span class="line">   ### html-webpack-plugin</span><br><span class="line"></span><br><span class="line">   - 作用：</span><br><span class="line">     - 自动在内存中根据指定页面生成一个内存页面，自动引入bundle.js文件到页面中去</span><br><span class="line"></span><br><span class="line">   1. 引入到webpack.config.js中</span><br><span class="line"></span><br><span class="line">   2. &#96;&#96;&#96;js</span><br><span class="line">      plugins: [</span><br><span class="line">        new htmlWebpackPlugin(&#123;</span><br><span class="line">         template: path.join(__dirname, &quot;.&#x2F;src&#x2F;index.html&quot;),</span><br></pre></td></tr></table></figure></code></pre></li></ol></li></ol><h3 id="css-less-scss使用"><a href="#css-less-scss使用" class="headerlink" title="css,less,scss使用"></a>css,less,scss使用</h3><ul><li>安装相关loader</li></ul><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> htmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./src/main.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    <span class="comment">//这个节点，用于配置所有第三方模块加载器</span></span><br><span class="line">    rules: [</span><br><span class="line">      <span class="comment">//配置css规则,从右到左调用</span></span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>] &#125;,</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.less$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"less-loader"</span>] &#125;,</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"sass-loader"</span>] &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> htmlWebpackPlugin(&#123;</span><br><span class="line">      template: path.join(__dirname, <span class="string">"./src/index.html"</span>),</span><br><span class="line">      filename: <span class="string">"index.html"</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200420095504583.png"  alt="image-20200420095504583"></p><p>[hash:8]-[name].[ext] 不重复显示图片</p><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><blockquote><p><a href="https://www.webpackjs.com/guides/installation/" target="_blank" rel="noopener">webpack官方文档</a></p></blockquote>]]></content>
       
       
       <categories>
@@ -70,7 +70,7 @@
       
         <tags>
             
-            <tag> jquery </tag>
+            <tag> webpack </tag>
             
         </tags>
       
@@ -95,6 +95,8 @@
       
         <tags>
             
+            <tag> webpack </tag>
+            
             <tag> Vuejs </tag>
             
             <tag> JavaScript </tag>
@@ -102,8 +104,6 @@
             <tag> es6 </tag>
             
             <tag> element </tag>
-            
-            <tag> webpack </tag>
             
             <tag> vue-cli </tag>
             
@@ -118,11 +118,11 @@
     
     
     <entry>
-      <title>Webpack</title>
-      <link href="/2019/10/26/webpack4.42.1/"/>
-      <url>/2019/10/26/webpack4.42.1/</url>
+      <title>Jquery</title>
+      <link href="/2019/10/26/jquery/"/>
+      <url>/2019/10/26/jquery/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol><li><p>webpack前端自动化构建工具，实现资源的合并，打包，压缩，混淆等诸多功能</p></li><li><p>能够处理文件相互依赖关系</p></li><li><p>能够解决js兼容问题，把高级的，浏览器不识别的语法转换成高级浏览器可以识别的语法</p></li></ol><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200419102000890.png"  alt="image-20200419102000890"></p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. npm install webpack -g</span><br><span class="line"></span><br><span class="line">2. npm install webpack-cli -g</span><br></pre></td></tr></table></figure><h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200419102043588.png"  alt="image-20200419102043588"></p><ul><li><p><em>将main.js打包输出到dist目录</em></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">webpack .&#x2F;src&#x2F;main.js -o .&#x2F;dist&#x2F;bundle.js</span><br></pre></td></tr></table></figure></li><li><p>index.html引用bundle.js即可使用</p></li></ul><h3 id="webpack-dev-server的使用"><a href="#webpack-dev-server的使用" class="headerlink" title="webpack-dev-server的使用"></a>webpack-dev-server的使用</h3><ol><li><p>npm install webpack-dev-server -D</p><ol><li><pre><code class="tex">即--dev（生产）包名会被注册在package.json的devDependencies里面，仅在开发环境下存在的包用-D，如babel，sass-loader这些解析器<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. webpack-dev-server工具，实现自动打包编译功能，和webpack用法一样</span><br><span class="line"></span><br><span class="line">3. webpack-dev-server 帮我们打包的bundle.js文件，并没有放到实际的物理磁盘上，而是，直接托管到电脑的内存中，所以，我们在项目根目录中，无法找到这个文件的</span><br><span class="line"></span><br><span class="line">   ####webpack-dev-server配置命令</span><br><span class="line"></span><br><span class="line">   1. 在package.json中加入，使用时npm run dev</span><br><span class="line">      1. ![image-20200419153037801](http:&#x2F;&#x2F;q9c3c6b0h.bkt.clouddn.com&#x2F;image-20200419153037801.png)</span><br><span class="line">      2. --open 自动打开浏览器   --port 设置端口号  --contentBase src 设置src为默认启动 --hot热加载浏览器不刷新</span><br><span class="line">   2. 第二种方式*了解*，**推荐第一种**</span><br><span class="line">      1. ![image-20200419154226826](http:&#x2F;&#x2F;q9c3c6b0h.bkt.clouddn.com&#x2F;image-20200419154226826.png)</span><br><span class="line"></span><br><span class="line">   ### html-webpack-plugin</span><br><span class="line"></span><br><span class="line">   - 作用：</span><br><span class="line">     - 自动在内存中根据指定页面生成一个内存页面，自动引入bundle.js文件到页面中去</span><br><span class="line"></span><br><span class="line">   1. 引入到webpack.config.js中</span><br><span class="line"></span><br><span class="line">   2. &#96;&#96;&#96;js</span><br><span class="line">      plugins: [</span><br><span class="line">        new htmlWebpackPlugin(&#123;</span><br><span class="line">         template: path.join(__dirname, &quot;.&#x2F;src&#x2F;index.html&quot;),</span><br></pre></td></tr></table></figure></code></pre></li></ol></li></ol><h3 id="css-less-scss使用"><a href="#css-less-scss使用" class="headerlink" title="css,less,scss使用"></a>css,less,scss使用</h3><ul><li>安装相关loader</li></ul><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> htmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./src/main.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    <span class="comment">//这个节点，用于配置所有第三方模块加载器</span></span><br><span class="line">    rules: [</span><br><span class="line">      <span class="comment">//配置css规则,从右到左调用</span></span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>] &#125;,</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.less$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"less-loader"</span>] &#125;,</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>, <span class="attr">use</span>: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"sass-loader"</span>] &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> htmlWebpackPlugin(&#123;</span><br><span class="line">      template: path.join(__dirname, <span class="string">"./src/index.html"</span>),</span><br><span class="line">      filename: <span class="string">"index.html"</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200420095504583.png"  alt="image-20200420095504583"></p><p>[hash:8]-[name].[ext] 不重复显示图片</p><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><blockquote><p><a href="https://www.webpackjs.com/guides/installation/" target="_blank" rel="noopener">webpack官方文档</a></p></blockquote>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
       
       
       <categories>
@@ -134,7 +134,7 @@
       
         <tags>
             
-            <tag> webpack </tag>
+            <tag> jquery </tag>
             
         </tags>
       
@@ -161,9 +161,9 @@
             
             <tag> ajax </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> webpack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> nodejs </tag>
             
