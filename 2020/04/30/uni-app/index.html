@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>uni-app项目实战(懂你找图) | 趁年轻</title><meta name="description" content="uni-app项目实战(懂你找图)"><meta name="keywords" content="uni-app,monentjs,axios"><meta name="author" content="Lhl"><meta name="copyright" content="Lhl"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="http://ta.qq.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="uni-app项目实战(懂你找图)"><meta name="twitter:description" content="uni-app项目实战(懂你找图)"><meta name="twitter:image" content="http://q9c3c6b0h.bkt.clouddn.com/u%3D721717975%2C1552103113%26fm%3D26%26gp%3D0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="uni-app项目实战(懂你找图)"><meta property="og:url" content="https://lhl-cpu.github.io/2020/04/30/uni-app/"><meta property="og:site_name" content="趁年轻"><meta property="og:description" content="uni-app项目实战(懂你找图)"><meta property="og:image" content="http://q9c3c6b0h.bkt.clouddn.com/u%3D721717975%2C1552103113%26fm%3D26%26gp%3D0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://lhl-cpu.github.io/2020/04/30/uni-app/"><link rel="prev" title="Windows10软件推荐" href="https://lhl-cpu.github.io/2020/05/01/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"><link rel="next" title="微信小程序基础+项目" href="https://lhl-cpu.github.io/2020/03/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><script src="https://tajs.qq.com/stats?sId=66549184" charset="UTF-8"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: true,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uni-app简介"><span class="toc-number">2.</span> <span class="toc-text">uni-app简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境"><span class="toc-number">3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块基本功能"><span class="toc-number">4.</span> <span class="toc-text">模块基本功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建首页子页面"><span class="toc-number">4.1.</span> <span class="toc-text">搭建首页子页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分段器使用"><span class="toc-number">4.2.</span> <span class="toc-text">分段器使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装自己的异步请求"><span class="toc-number">4.3.</span> <span class="toc-text">封装自己的异步请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#首页推荐模块"><span class="toc-number">4.4.</span> <span class="toc-text">首页推荐模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视频图片下载功能"><span class="toc-number">4.5.</span> <span class="toc-text">视频图片下载功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面展示"><span class="toc-number">4.6.</span> <span class="toc-text">页面展示</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(http://q9c3c6b0h.bkt.clouddn.com/u%3D721717975%2C1552103113%26fm%3D26%26gp%3D0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">趁年轻</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">uni-app项目实战(懂你找图)</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-04-30 15:45:03"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-30</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-05-13 11:26:14"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-05-13</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.9k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 10 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/30/uni-app/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/30/uni-app/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>完成项目需掌握技术<ul>
+<li>Javascript</li>
+<li>Vue</li>
+<li>微信小程序</li>
+<li>sass</li>
+</ul>
+</li>
+<li><a href="https://www.showdoc.cc/414855720281749?page_id=3678621017219602" target="_blank" rel="noopener">接口文档</a></li>
+<li><a href="https://github.com/lhl-cpu/uni-app-" target="_blank" rel="noopener">https://github.com/lhl-cpu/uni-app-</a></li>
+</ul>
+<h2 id="uni-app简介"><a href="#uni-app简介" class="headerlink" title="uni-app简介"></a>uni-app简介</h2><ul>
+<li>uni-app 是一个使用 Vue.js语法来开发所有前端应用的框架，称为全端开发框架</li>
+</ul>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li><p><strong>脚手架搭建项目</strong></p>
+<ol>
+<li>全局安装<ul>
+<li>npm install -g @vue/cli</li>
+</ul>
+</li>
+<li>创建项目<ul>
+<li>vue create -p dcloudio/uni-preset-vue my-project</li>
+</ul>
+</li>
+<li>启动项目<ul>
+<li>npm run dev:mp-weixin</li>
+</ul>
+</li>
+<li>微信小程序开发工具导入项目</li>
+</ol>
+</li>
+<li><p><strong>项目目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">│  App.vue             应用配置，用来配置App全局样式以及监听</span><br><span class="line">│  main.js               Vue初始化入口文件</span><br><span class="line">│  manifest.json   配置应用名称、appid、logo、版本等打包信息</span><br><span class="line">│  pages.json        配置页面路由、导航条、选项卡等页面类信息</span><br><span class="line">│  uni.scss             内置的sass变量，可以直接使用</span><br><span class="line">│  </span><br><span class="line">|─pages               </span><br><span class="line">│  └─index</span><br><span class="line">│          index.vue  页面组件</span><br><span class="line">│          </span><br><span class="line">└─static                 静态资源</span><br><span class="line">        logo.png</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>样式和sass</strong></p>
+<ul>
+<li>支持小程序的rpx 和 h5的vw、vh</li>
+<li>内置有sass的配置了，只需要 安装对应的依赖即可 “ npm install sass-loader node-sass ”</li>
+<li>vue组件中，在 style 标签上 加入 属性 “ <style lang='scss' >  ” 即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h2><h3 id="新增tabbar页面"><a href="#新增tabbar页面" class="headerlink" title="新增tabbar页面"></a>新增tabbar页面</h3><ul>
+<li><table>
+<thead>
+<tr>
+<th><strong>页面名称</strong></th>
+<th><strong>路径</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>首页</td>
+<td>home/index.vue</td>
+</tr>
+<tr>
+<td>横屏</td>
+<td>horizontal/index.vue</td>
+</tr>
+<tr>
+<td>精美视频</td>
+<td>video/index.vue</td>
+</tr>
+<tr>
+<td>搜索</td>
+<td>search/index.vue</td>
+</tr>
+<tr>
+<td>我的</td>
+<td>mine/index.vue</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="引入字体图标"><a href="#引入字体图标" class="headerlink" title="引入字体图标"></a>引入字体图标</h3><style>
+    /*每个页面公共css */
+    @import "./styles/base.wxss";
+    @import "./styles/iconfont.wxss";
+</style>
+
+<h2 id="模块基本功能"><a href="#模块基本功能" class="headerlink" title="模块基本功能"></a>模块基本功能</h2><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513093805433.png"  alt="image-20200513093805433"></p>
+<h3 id="搭建首页子页面"><a href="#搭建首页子页面" class="headerlink" title="搭建首页子页面"></a>搭建首页子页面</h3><ul>
+<li>首页模块分为 4个部分，分别是 推荐、分类、最新、专辑</li>
+<li>新建自定义组件来代替 上述的4个页面</li>
+<li>home-recommend</li>
+<li>home-category</li>
+<li>home-new</li>
+<li>home-album</li>
+</ul>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513105741735.png"  alt="image-20200513105741735"></p>
+<h3 id="分段器使用"><a href="#分段器使用" class="headerlink" title="分段器使用"></a>分段器使用</h3><ul>
+<li>分段器指的是 uni-ui 中的一个组件，其实就是我们俗称的 标签页，tab栏</li>
+<li><a href="https://ext.dcloud.net.cn/plugin?id=54" target="_blank" rel="noopener">https://ext.dcloud.net.cn/plugin?id=54</a></li>
+</ul>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513105830130.png"  alt="image-20200513105830130"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;view class&#x3D;&quot;home_tab&quot;&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;home_tab_title&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;title_inner&quot;&gt;</span><br><span class="line">        &lt;uni-segmented-control</span><br><span class="line">          :current&#x3D;&quot;current&quot;</span><br><span class="line">          :values&#x3D;&quot;items.map((v) &#x3D;&gt; v.title)&quot;</span><br><span class="line">          @clickItem&#x3D;&quot;onClickItem&quot;</span><br><span class="line">          style-type&#x3D;&quot;text&quot;</span><br><span class="line">          active-color&#x3D;&quot;#e63a7d&quot;</span><br><span class="line">        &gt;&lt;&#x2F;uni-segmented-control&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;iconfont iconsearch&quot;&gt;&lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;home_tab_content&quot;&gt;</span><br><span class="line">      &lt;view v-if&#x3D;&quot;current &#x3D;&#x3D;&#x3D; 0&quot;&gt;</span><br><span class="line">        &lt;recommend&gt;&lt;&#x2F;recommend&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view v-if&#x3D;&quot;current &#x3D;&#x3D;&#x3D; 1&quot;&gt;</span><br><span class="line">        &lt;category&gt;&lt;&#x2F;category&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view v-if&#x3D;&quot;current &#x3D;&#x3D;&#x3D; 2&quot;&gt;</span><br><span class="line">        &lt;anew&gt;&lt;&#x2F;anew&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view v-if&#x3D;&quot;current &#x3D;&#x3D;&#x3D; 3&quot;&gt;</span><br><span class="line">        &lt;album&gt;&lt;&#x2F;album&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import recommend from &quot;.&#x2F;home-recommend&#x2F;index.vue&quot;;</span><br><span class="line">import category from &quot;.&#x2F;home-category&#x2F;index.vue&quot;;</span><br><span class="line">import anew from &quot;.&#x2F;home-new&#x2F;index.vue&quot;;</span><br><span class="line">import album from &quot;.&#x2F;home-album&#x2F;index.vue&quot;;</span><br><span class="line">&#x2F;&#x2F;引入</span><br><span class="line">import uniSegmentedControl from &quot;..&#x2F;..&#x2F;..&#x2F;node_modules&#x2F;@dcloudio&#x2F;uni-ui&#x2F;lib&#x2F;uni-segmented-control&#x2F;uni-segmented-control.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    recommend,</span><br><span class="line">    category,</span><br><span class="line">    anew,</span><br><span class="line">    album,</span><br><span class="line">    uniSegmentedControl,</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      items: [</span><br><span class="line">        &#123; title: &quot;推荐&quot; &#125;,</span><br><span class="line">        &#123; title: &quot;分类&quot; &#125;,</span><br><span class="line">        &#123; title: &quot;最新&quot; &#125;,</span><br><span class="line">        &#123; title: &quot;专辑&quot; &#125;,</span><br><span class="line">      ],</span><br><span class="line">      current: 0,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClickItem(e) &#123;</span><br><span class="line">      if (this.current !&#x3D;&#x3D; e.currentIndex) &#123;</span><br><span class="line">        this.current &#x3D; e.currentIndex;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">.home_tab_title &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  .title_inner &#123;</span><br><span class="line">    width: 70%;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">  &#125;</span><br><span class="line">  .iconsearch &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 45%;</span><br><span class="line">    transform: translateY(-50%);</span><br><span class="line">    right: 6%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">.home_tab_content &#123;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="封装自己的异步请求"><a href="#封装自己的异步请求" class="headerlink" title="封装自己的异步请求"></a>封装自己的异步请求</h3><ul>
+<li><p>为什么要封装</p>
+<ul>
+<li>原生的请求不支持 promise</li>
+<li>uni-api 的请求不能够方便的添加 请求中 效果</li>
+<li>uni-api 的请求返回值是个数组，不方便</li>
+</ul>
+</li>
+<li><p>封装思路</p>
+<ul>
+<li>基于原生的promise来封装</li>
+<li>挂载到Vue的原型上</li>
+<li>通过 this.request 的方式来使用</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (params) =&gt; &#123;</span><br><span class="line">  uni.showLoading(&#123;</span><br><span class="line">    title: <span class="string">"加载中"</span>,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      ...params,</span><br><span class="line">      success(res) &#123;</span><br><span class="line">        resolve(res.data);</span><br><span class="line">      &#125;,</span><br><span class="line">      fail(err) &#123;</span><br><span class="line">        resolve(err);</span><br><span class="line">      &#125;,</span><br><span class="line">      complete() &#123;</span><br><span class="line">        uni.hideLoading();</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="首页推荐模块"><a href="#首页推荐模块" class="headerlink" title="首页推荐模块"></a>首页推荐模块</h3><ul>
+<li><p>数据动态渲染</p>
+</li>
+<li><p>moment.js 的使用</p>
+<ul>
+<li><a href="http://momentjs.cn/" target="_blank" rel="noopener">http://momentjs.cn/</a></li>
+</ul>
+</li>
+<li><p>基于scroll-view的分页加载</p>
+</li>
+<li><p>绑定滚动条触底事件 scrolltolower</p>
+</li>
+<li><p>实现分页逻辑</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;scroll-view</span><br><span class="line">    @scrolltolower&#x3D;&quot;handleToLower&quot;</span><br><span class="line">    class&#x3D;&quot;recommend_view&quot;</span><br><span class="line">    scroll-y</span><br><span class="line">    v-if&#x3D;&quot;recommends.length&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;!-- 推荐开始 --&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;recommend_wrap&quot;&gt;</span><br><span class="line">      &lt;navigator</span><br><span class="line">        class&#x3D;&quot;recommend_item&quot;</span><br><span class="line">        v-for&#x3D;&quot;(item, index) in recommends&quot;</span><br><span class="line">        :key&#x3D;&quot;index&quot;</span><br><span class="line">        :url&#x3D;&quot;&#96;&#x2F;pages&#x2F;ablum&#x2F;index?id&#x3D;$&#123;item.target&#125;&#96;&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;image mode&#x3D;&quot;widthFix&quot; :src&#x3D;&quot;item.thumb&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">      &lt;&#x2F;navigator&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;!-- 推荐结束 --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 月份开始 --&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;moneths_wrap&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;moneths_title&quot;&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;moneths_title_info&quot;&gt;</span><br><span class="line">          &lt;view class&#x3D;&quot;moneths_info&quot;&gt;</span><br><span class="line">            &lt;text&gt;&#123;&#123; monthes.DD &#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">            &#x2F;&#123;&#123; monthes.MM &#125;&#125;月</span><br><span class="line">          &lt;&#x2F;view&gt;</span><br><span class="line">          &lt;view class&#x3D;&quot;moneths_text&quot;&gt;&#123;&#123; monthes.title &#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;moneths_title_more&quot;&gt;更多 &gt;&lt;&#x2F;view&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;moneths_content&quot;&gt;</span><br><span class="line">        &lt;view</span><br><span class="line">          class&#x3D;&quot;moneths_item&quot;</span><br><span class="line">          v-for&#x3D;&quot;(item, index) in monthes.items&quot;</span><br><span class="line">          :key&#x3D;&quot;index&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;godetail :list&#x3D;&quot;monthes.items&quot; :index&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;image</span><br><span class="line">              mode&#x3D;&quot;aspectFill&quot;</span><br><span class="line">              :src&#x3D;&quot;item.thumb + item.rule.replace(&#39;$&lt;Height&gt;&#39;, 360)&quot;</span><br><span class="line">            &gt;&lt;&#x2F;image&gt;</span><br><span class="line">          &lt;&#x2F;godetail&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;!-- 月份结束 --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 热门开始 --&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;hots_wrap&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;hots_title&quot;&gt;</span><br><span class="line">        &lt;text&gt;热门&lt;&#x2F;text&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;hots_content&quot;&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;hot_item&quot; v-for&#x3D;&quot;(item, index) in hots&quot; :key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">          &lt;godetail :list&#x3D;&quot;hots&quot; :index&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;image mode&#x3D;&quot;widthFix&quot; :src&#x3D;&quot;item.thumb&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">          &lt;&#x2F;godetail&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;!-- 热门结束 --&gt;</span><br><span class="line">  &lt;&#x2F;scroll-view&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import moment from &quot;moment&quot;;</span><br><span class="line">import godetail from &quot;..&#x2F;..&#x2F;..&#x2F;components&#x2F;goDetail&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      recommends: [],</span><br><span class="line">      monthes: &#123;&#125;,</span><br><span class="line">      hots: [],</span><br><span class="line">      params: &#123;</span><br><span class="line">        limit: 30,</span><br><span class="line">        order: &quot;hot&quot;,</span><br><span class="line">        skip: 0,</span><br><span class="line">      &#125;,</span><br><span class="line">      havemore: true,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    godetail,</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    uni.setNavigationBarTitle(&#123;</span><br><span class="line">      title: &quot;推荐&quot;,</span><br><span class="line">    &#125;);</span><br><span class="line">    this.getList();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getList() &#123;</span><br><span class="line">      this.request(&#123;</span><br><span class="line">        url: &quot;http:&#x2F;&#x2F;157.122.54.189:9088&#x2F;image&#x2F;v3&#x2F;homepage&#x2F;vertical&quot;,</span><br><span class="line">        data: this.params,</span><br><span class="line">      &#125;).then((result) &#x3D;&gt; &#123;</span><br><span class="line">        if (result.res.vertical.length &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">          this.havemore &#x3D; false;</span><br><span class="line">          return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.recommends.length &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">          this.recommends &#x3D; result.res.homepage[1].items;</span><br><span class="line">          this.monthes &#x3D; result.res.homepage[2];</span><br><span class="line">          this.monthes.MM &#x3D; moment(this.monthes.stime).format(&quot;MM&quot;);</span><br><span class="line">          this.monthes.DD &#x3D; moment(this.monthes.stime).format(&quot;DD&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        this.hots &#x3D; [...this.hots, ...result.res.vertical];</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    handleToLower: function() &#123;</span><br><span class="line">      if (this.havemore) &#123;</span><br><span class="line">        this.params.skip +&#x3D; this.params.limit;</span><br><span class="line">        this.getList();</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        uni.showTabBar(&#123;</span><br><span class="line">          title: &quot;到底了&quot;,</span><br><span class="line">          icno: &quot;none&quot;,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line">.recommend_view &#123;</span><br><span class="line">  height: calc(100vh - 36px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.recommend_wrap &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-wrap: wrap;</span><br><span class="line">  .recommend_item &#123;</span><br><span class="line">    width: 50%;</span><br><span class="line">    border: 5rpx solid #fff;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.moneths_wrap &#123;</span><br><span class="line">  .moneths_title &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: space-between;</span><br><span class="line">    padding: 20rpx;</span><br><span class="line">    .moneths_title_info &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      .moneths_info &#123;</span><br><span class="line">        color: $themeColor;</span><br><span class="line">        font-weight: 600;</span><br><span class="line">        text &#123;</span><br><span class="line">          font-size: 36rpx;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      .moneths_text &#123;</span><br><span class="line">        padding-left: 15rpx;</span><br><span class="line">        font-weight: 600;</span><br><span class="line">        font-size: 34rpx;</span><br><span class="line">        color: #666;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .moneths_title_more &#123;</span><br><span class="line">      font-size: 24rpx;</span><br><span class="line">      color: $themeColor;</span><br><span class="line">      font-weight: 600;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .moneths_content &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">    .moneths_item &#123;</span><br><span class="line">      width: 33.33%;</span><br><span class="line">      border: 5rpx solid #fff;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.hots_wrap &#123;</span><br><span class="line">  .hots_title &#123;</span><br><span class="line">    padding: 20rpx;</span><br><span class="line">    text &#123;</span><br><span class="line">      padding-left: 20rpx;</span><br><span class="line">      border-left: 10rpx solid $themeColor;</span><br><span class="line">      font-size: 30rpx;</span><br><span class="line">      font-weight: 600;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .hots_content &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">    .hot_item &#123;</span><br><span class="line">      width: 33.33%;</span><br><span class="line">      border: 5rpx solid #fff;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="视频图片下载功能"><a href="#视频图片下载功能" class="headerlink" title="视频图片下载功能"></a>视频图片下载功能</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> handledownload() &#123;</span><br><span class="line">      <span class="keyword">await</span> uni.showLoading(&#123; <span class="attr">title</span>: <span class="string">"下载中"</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> &#123; temFilePath &#125; = (</span><br><span class="line">        <span class="keyword">await</span> uni.downloadFile(&#123; <span class="attr">url</span>: <span class="keyword">this</span>.videoObj.video &#125;)</span><br><span class="line">      )[<span class="number">1</span>];</span><br><span class="line">      <span class="keyword">await</span> uni.saveVideoToPhotosAlbum(&#123;</span><br><span class="line">        filePath: temFilePath,</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      uni.hideLoading();</span><br><span class="line">      <span class="keyword">await</span> uni.showToast(&#123;</span><br><span class="line">        title: <span class="string">"下载成功"</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="页面展示"><a href="#页面展示" class="headerlink" title="页面展示"></a>页面展示</h3><p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513111559242.png"  alt="image-20200513111559242"></p>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513111636461.png"  alt="image-20200513111636461"></p>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513111714246.png"  alt="image-20200513111714246"></p>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513111828261.png"  alt="image-20200513111828261"></p>
+<p><img src="/" class="lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/image-20200513112032881.png"  alt="image-20200513112032881"></p>
+</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lhl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lhl-cpu.github.io/2020/04/30/uni-app/">https://lhl-cpu.github.io/2020/04/30/uni-app/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lhl-cpu.github.io" target="_blank">趁年轻</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/uni-app/">uni-app</a><a class="post-meta__tags" href="/tags/monentjs/">monentjs</a><a class="post-meta__tags" href="/tags/axios/">axios</a></div><div class="post_share"><div class="social-share" data-image="http://q9c3c6b0h.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.jfif" data-sites="qq,wechat,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/05/01/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"><img class="prev_cover lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.jfif" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows10软件推荐</div></div></a></div><div class="next-post pull_right"><a href="/2020/03/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><img class="next_cover lazyload" data-src="http://q9c3c6b0h.bkt.clouddn.com/timg.jfif" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">微信小程序基础+项目</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'zDx3dNSqQly2FpIqdktw1I85-gzGzoHsz',
+  appKey: 'BNzNDQtsW6BljxigY706EOGX',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By Lhl</div><div class="footer_custom_text">Hi, welcome to my <a href="https://lhl-cpu.github.io/">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>
